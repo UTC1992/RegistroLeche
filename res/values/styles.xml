@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -15,6 +15,24 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    
+    <style name="loginBoton">
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:background">#088A4B</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="titulos">
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        
+    </style>
+    
+    <style name="botonmenu">
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:background">#088A4B</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
 </resources>

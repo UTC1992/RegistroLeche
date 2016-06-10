@@ -2,6 +2,7 @@ package com.registroleche;
 
 import models.Empleado;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 import baseDatos.AdministrarBD;
 import baseDatos.Conexion;
 
-public class RegistroUser extends ActionBarActivity {
+public class PerfilEmpleado extends ActionBarActivity {
 
 	EditText nombres, apellidos, telefono, correo, username, password;
 
@@ -24,57 +25,78 @@ public class RegistroUser extends ActionBarActivity {
 	Conexion conex = new Conexion();
 	SQLiteDatabase base;
 
+	int id = 0;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_registro_user);
+		setContentView(R.layout.activity_perfil_empleado);
 
-		this.nombres = (EditText) findViewById(R.id.txtnombres);
-		this.apellidos = (EditText) findViewById(R.id.txtapellidos);
-		this.telefono = (EditText) findViewById(R.id.txttelefono);
-		this.correo = (EditText) findViewById(R.id.txtcorreo);
-		this.username = (EditText) findViewById(R.id.txtusername);
-		this.password = (EditText) findViewById(R.id.txtpassword);
+		this.nombres = (EditText) findViewById(R.id.nombre_pro);
+		this.apellidos = (EditText) findViewById(R.id.apellido_pro);
+		this.telefono = (EditText) findViewById(R.id.telefono_pro);
+		this.correo = (EditText) findViewById(R.id.direccion_pro);
+		this.username = (EditText) findViewById(R.id.username_emp);
+		this.password = (EditText) findViewById(R.id.password_emp);
+
+		Empleado empleado = new Empleado();
+
+		// open database
+		this.CrearAbrirBDD();
+
+		Cursor c = base.rawQuery(
+				"SELECT * FROM tbl_empleado WHERE activo_emp=1", null);
+
+		if (c.moveToFirst()) {
+			do {
+				empleado = new Empleado(c.getInt(0), c.getString(1),
+						c.getString(2), c.getString(3), c.getString(4),
+						c.getString(5), c.getString(6));
+			} while (c.moveToNext());
+		}
+
+		this.nombres.setText(empleado.nombres_emp.toString());
+		this.apellidos.setText(empleado.apellidos_emp.toString());
+		this.telefono.setText(empleado.telefono_emp.toString());
+		this.correo.setText(empleado.correo_emp.toString());
+		this.username.setText(empleado.username_emp.toString());
+		this.password.setText(empleado.password_emp.toString());
+
+		id = empleado.id;
 
 	}
 
-	public void ProcesoGuardar(View view) {
-		
+	public void ProcesoActualizar(View view) {
+
 		Empleado emp;
 		boolean respuesta = false;
-
 
 		if (this.ValidarRegistro()) {
 			// abrir base de datos
 			this.CrearAbrirBDD();
-			
+
 			emp = this.CapturarDatos();
-			
-			respuesta = admin.insertarE(base, emp);
+
+			respuesta = admin.actualizarE(base, emp, id);
 
 			if (respuesta) {
-				Toast.makeText(getApplicationContext(), "Sus datos se han guardado exitosamente.",
+				Toast.makeText(getApplicationContext(),
+						"Sus datos se han actualizado exitosamente.",
 						Toast.LENGTH_SHORT).show();
-				
-				Intent regresar=new Intent(this,MainActivity.class);
-				startActivity(regresar);
+				finish();
 			}
-			
-			
+
 			else {
 				Toast.makeText(getApplicationContext(),
-						"Error al guardar al empleado.", Toast.LENGTH_SHORT)
-						.show();
+						"Error al actualizar datos de proveedor.",
+						Toast.LENGTH_SHORT).show();
 			}
 		} else {
 			Toast.makeText(getApplicationContext(),
 					"Debe llenar todos los campos porfavor", Toast.LENGTH_SHORT)
 					.show();
 		}
-		
-		
-		
-		
+
 	}
 
 	public boolean ValidarRegistro() {
@@ -103,23 +125,29 @@ public class RegistroUser extends ActionBarActivity {
 		return emp;
 	}
 
-	public void Cancelar(View view) {
-		
-		Intent login = new Intent(this, MainActivity.class);
-		startActivity(login);
+	public void Eliminar(View view) {
+		base.execSQL("DELETE FROM tbl_empleado WHERE username_emp='"
+				+ this.username.getText().toString() + "'");
+		Intent menu = new Intent(this, MainActivity.class);
+		startActivity(menu);
 	}
-	
+
+	public void Cancelar(View view) {
+		Intent menu = new Intent(this, MenuInicio.class);
+		startActivity(menu);
+	}
+
 	public void CrearAbrirBDD() {
 		// crear DB
-		base = openOrCreateDatabase("registro_compras_db.sqlite", MODE_WORLD_WRITEABLE,
-				null);
+		base = openOrCreateDatabase("registro_compras_db.sqlite",
+				MODE_WORLD_WRITEABLE, null);
 		this.conex.CrearBaseDatos(base);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.registro_user, menu);
+		getMenuInflater().inflate(R.menu.perfil_empleado, menu);
 		return true;
 	}
 

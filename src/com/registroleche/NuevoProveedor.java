@@ -1,6 +1,7 @@
 package com.registroleche;
 
 import models.Empleado;
+import models.Proveedor;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,9 +14,9 @@ import android.widget.Toast;
 import baseDatos.AdministrarBD;
 import baseDatos.Conexion;
 
-public class RegistroUser extends ActionBarActivity {
+public class NuevoProveedor extends ActionBarActivity {
 
-	EditText nombres, apellidos, telefono, correo, username, password;
+	EditText nombres, apellidos, telefono, direccion;
 
 	// administracion
 	AdministrarBD admin = new AdministrarBD();
@@ -27,40 +28,36 @@ public class RegistroUser extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_registro_user);
+		setContentView(R.layout.activity_nuevo_proveedor);
 
-		this.nombres = (EditText) findViewById(R.id.txtnombres);
-		this.apellidos = (EditText) findViewById(R.id.txtapellidos);
-		this.telefono = (EditText) findViewById(R.id.txttelefono);
-		this.correo = (EditText) findViewById(R.id.txtcorreo);
-		this.username = (EditText) findViewById(R.id.txtusername);
-		this.password = (EditText) findViewById(R.id.txtpassword);
-
+		this.nombres = (EditText) findViewById(R.id.nombre_pro);
+		this.apellidos = (EditText) findViewById(R.id.apellido_pro);
+		this.telefono = (EditText) findViewById(R.id.telefono_pro);
+		this.direccion = (EditText) findViewById(R.id.direccion_pro);
 	}
 
 	public void ProcesoGuardar(View view) {
-		
-		Empleado emp;
-		boolean respuesta = false;
 
+		Proveedor prov;
+		boolean respuesta = false;
 
 		if (this.ValidarRegistro()) {
 			// abrir base de datos
 			this.CrearAbrirBDD();
-			
-			emp = this.CapturarDatos();
-			
-			respuesta = admin.insertarE(base, emp);
+
+			prov = this.CapturarDatos();
+
+			respuesta = admin.insertarP(base, prov);
 
 			if (respuesta) {
-				Toast.makeText(getApplicationContext(), "Sus datos se han guardado exitosamente.",
+				Toast.makeText(getApplicationContext(),
+						"Sus datos se han guardado exitosamente.",
 						Toast.LENGTH_SHORT).show();
-				
-				Intent regresar=new Intent(this,MainActivity.class);
-				startActivity(regresar);
+				Intent listaProve = new Intent(this, ConsultarProveedores.class);
+				startActivity(listaProve);
+
 			}
-			
-			
+
 			else {
 				Toast.makeText(getApplicationContext(),
 						"Error al guardar al empleado.", Toast.LENGTH_SHORT)
@@ -71,10 +68,13 @@ public class RegistroUser extends ActionBarActivity {
 					"Debe llenar todos los campos porfavor", Toast.LENGTH_SHORT)
 					.show();
 		}
-		
-		
-		
-		
+
+	}
+	
+	public void CancelarNuevo(View view)
+	{
+		Intent cancelar = new Intent(this, ConsultarProveedores.class);
+		startActivity(cancelar);
 	}
 
 	public boolean ValidarRegistro() {
@@ -83,9 +83,7 @@ public class RegistroUser extends ActionBarActivity {
 		if (!this.nombres.getText().toString().equals("")
 				&& !this.apellidos.getText().toString().equals("")
 				&& !this.telefono.getText().toString().equals("")
-				&& !this.correo.getText().toString().equals("")
-				&& !this.username.getText().toString().equals("")
-				&& !this.password.getText().toString().equals("")) {
+				&& !this.direccion.getText().toString().equals("")) {
 
 			return true;
 
@@ -94,32 +92,24 @@ public class RegistroUser extends ActionBarActivity {
 		}
 	}
 
-	public Empleado CapturarDatos() {
-		Empleado emp = new Empleado(this.nombres.getText().toString(),
+	public Proveedor CapturarDatos() {
+		Proveedor prov = new Proveedor(this.nombres.getText().toString(),
 				this.apellidos.getText().toString(), this.telefono.getText()
-						.toString(), this.correo.getText().toString(),
-				this.username.getText().toString(), this.password.getText()
-						.toString());
-		return emp;
+						.toString(), this.direccion.getText().toString());
+		return prov;
 	}
 
-	public void Cancelar(View view) {
-		
-		Intent login = new Intent(this, MainActivity.class);
-		startActivity(login);
-	}
-	
 	public void CrearAbrirBDD() {
 		// crear DB
-		base = openOrCreateDatabase("registro_compras_db.sqlite", MODE_WORLD_WRITEABLE,
-				null);
+		base = openOrCreateDatabase("registro_compras_db.sqlite",
+				MODE_WORLD_WRITEABLE, null);
 		this.conex.CrearBaseDatos(base);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.registro_user, menu);
+		getMenuInflater().inflate(R.menu.nuevo_proveedor, menu);
 		return true;
 	}
 

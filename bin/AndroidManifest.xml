@@ -23,13 +23,80 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".LoginUser"
+            android:label="@string/title_activity_login_user" >
+        </activity>
+        <activity
             android:name=".RegistroUser"
             android:label="@string/title_activity_registro_user" >
         </activity>
         <activity
-            android:name=".LoginUser"
-            android:label="@string/title_activity_login_user" >
+            android:name=".MenuAdmin"
+            android:label="@string/title_activity_menu_admin" >
+        </activity>
+        <activity
+            android:name=".MenuAdmin2"
+            android:label="@string/title_activity_menu_admin2" >
+        </activity>
+        <activity
+            android:name=".InicioAdmin"
+            android:label="@string/title_activity_inicio_admin" >
+        </activity>
+        <activity
+            android:name=".Perfil_empleado"
+            android:label="@string/title_activity_perfil_empleado" >
+        </activity>
+        <activity
+            android:name=".Perfil_proveedores"
+            android:label="@string/title_activity_perfil_proveedores" >
+        </activity>
+        <activity
+            android:name=".Nuevo_pro"
+            android:label="@string/title_activity_nuevo_pro" >
+        </activity>
+        <activity
+            android:name=".Datos_proveedor"
+            android:label="@string/title_activity_datos_proveedor" >
+        </activity>
+        <activity
+            android:name="menu.IndexAdmin"
+            android:label="@string/title_activity_index_admin" >
+        </activity>
+        <activity
+            android:name=".MenuInicio"
+            android:label="@string/title_activity_menu_inicio" >
+        </activity>
+        <activity
+            android:name=".PerfilEmpleado"
+            android:label="@string/title_activity_perfil_empleado" >
+        </activity>
+        <activity
+            android:name=".ConsultarProveedores"
+            android:label="@string/title_activity_consultar_proveedores" >
+        </activity>
+        <activity
+            android:name=".NuevoProveedor"
+            android:label="@string/title_activity_nuevo_proveedor" >
+        </activity>
+        <activity
+            android:name=".EditarProveedor"
+            android:label="@string/title_activity_editar_proveedor" >
         </activity>
     </application>
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+     To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
+     option is required to comply with the Google+ Sign-In developer policies
+    -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 </manifest>
