@@ -34,7 +34,7 @@
             android:id="@+id/nombre_pro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="qwertzuiopasdfghjklyxcvbn"
+            android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
             android:ems="10"
             android:background="@android:drawable/edit_text" >
 
@@ -51,7 +51,7 @@
             android:id="@+id/apellido_pro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="qwertzuiopasdfghjklyxcvbn"
+            android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
             android:ems="10" 
             android:background="@android:drawable/edit_text"/>
 

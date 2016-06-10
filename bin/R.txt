@@ -232,7 +232,8 @@ int drawable guardar 0x7f020059
 int drawable ic_drawer 0x7f02005a
 int drawable ic_launcher 0x7f02005b
 int drawable login 0x7f02005c
-int drawable registro_user 0x7f02005d
+int drawable logo 0x7f02005d
+int drawable registro_user 0x7f02005e
 int id Button01 0x7f050045
 int id TextView01 0x7f050055
 int id action_bar 0x7f05001a

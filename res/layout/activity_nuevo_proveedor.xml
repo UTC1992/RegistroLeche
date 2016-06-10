@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Nombres"
-            android:digits="qwertzuiopasdfghjklyxcvbn"
+            android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
             android:background="@android:drawable/edit_text" >
 
             <requestFocus />
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Apellidos" 
-            android:digits="qwertzuiopasdfghjklyxcvbn"
+            android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
             android:background="@android:drawable/edit_text"/>
 
         <EditText
