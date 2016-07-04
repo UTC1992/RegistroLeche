@@ -40,6 +40,12 @@ public class MenuInicio extends ActionBarActivity {
 		startActivity(compras);
 	}
 
+	public void MostrarReportes(View view)
+	{
+		Intent reportes = new Intent(this, ReportesCompras.class);
+		startActivity(reportes);
+	}
+	
 	public void Salir(View view)
 	{
 		//base.execSQL("UPDATE tbl_empleado SET activo_emp=0 WHERE activo_emp=1 ");

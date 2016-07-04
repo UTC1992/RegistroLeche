@@ -27,5 +27,6 @@
     <string name="title_activity_editar_proveedor">Editar Proveedor</string>
     <string name="title_activity_nuevo_compra">Nueva Compra</string>
     <string name="title_activity_consultar_compras">Compras</string>
+    <string name="title_activity_reportes_ventas">Reportes de Ventas</string>
 
 </resources>

@@ -15,47 +15,58 @@
     android:layout_alignParentRight="true"
     android:orientation="vertical" >
 
-        <TextView
-            style="@style/titulos"
-            android:id="@+id/textView1"
-            android:layout_width="296dp"
-            android:layout_height="wrap_content"
-            android:text="Mis Proveedores"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
-            android:layout_marginBottom="20dip"
-            />
-
-        <ListView
-            android:id="@+id/proveedores"
-            android:layout_width="match_parent"
-            android:layout_height="300dp" >
-        </ListView>
-
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <Button
-                android:id="@+id/button1"
-                style="@style/botonmenu"
-                android:layout_width="134dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:layout_marginRight="10dip"
-                android:onClick="NuevoProveedor"
-                android:text="Nuevo" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/Button01"
-                style="@style/botonmenu"
-                android:layout_width="134dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:layout_marginLeft="10dip"
-                android:onClick="Menu"
-                android:text="Menú" />
+                <TextView
+                    android:id="@+id/textView1"
+                    style="@style/titulos"
+                    android:layout_width="296dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:text="Mis Proveedores"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        </LinearLayout>
+                <ListView
+                    android:id="@+id/proveedores"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" >
+                </ListView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button1"
+                        style="@style/botonmenu"
+                        android:layout_width="134dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dip"
+                        android:layout_marginTop="10dip"
+                        android:onClick="NuevoProveedor"
+                        android:text="Nuevo" />
+
+                    <Button
+                        android:id="@+id/Button01"
+                        style="@style/botonmenu"
+                        android:layout_width="134dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginTop="10dip"
+                        android:onClick="Menu"
+                        android:text="Menú" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

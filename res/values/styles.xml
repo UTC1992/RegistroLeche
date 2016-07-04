@@ -35,4 +35,30 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
+    
+    <style name="estilo_celda">
+        <item name="android:typeface">normal</item>
+        <item name="android:textColor">@color/negro</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+     <style name="texto">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="fondo">
+        <item name="android:background">#0B4C5F</item>
+    </style>
+    
+    <style name="titulo">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="imagen">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+    
 </resources>
