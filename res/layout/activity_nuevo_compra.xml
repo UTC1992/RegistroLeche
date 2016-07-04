@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Calcular" 
-                    android:onClick="Calcular"
+                    android:onClick="CalcularTotales"
                     />
 
                 <EditText
@@ -97,13 +97,26 @@
                     android:hint="Subtotal"
                     android:inputType="numberDecimal" />
 
-                <EditText
-                    android:id="@+id/txtivacom"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Iva"
-                    android:inputType="numberDecimal" />
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="iva 14%:" />
+
+                    <EditText
+                        android:id="@+id/txtivacom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Iva"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/txttotalcom"

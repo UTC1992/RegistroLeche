@@ -73,7 +73,7 @@ public class NuevoCompra extends ActionBarActivity {
 				Toast.makeText(getApplicationContext(),
 						"Los datos se han guardado exitosamente.",
 						Toast.LENGTH_SHORT).show();
-				Intent listaProve = new Intent(this, ConsultarProveedores.class);
+				Intent listaProve = new Intent(this, ConsultarCompras.class);
 				startActivity(listaProve);
 
 			}
@@ -127,7 +127,37 @@ public class NuevoCompra extends ActionBarActivity {
 				Float.parseFloat(this.total.getText().toString()));
 		return com;
 	}
+	
+	public void CalcularTotales(View view)
+	{
+		
+		if (!this.fecha.getText().toString().equals("")
+				&& !this.detalle.getText().toString().equals("")
+				&& !this.cantidad.getText().toString().equals("")
+				&& !this.valorU.getText().toString().equals("")) 
+		{
+			int cantidad = Integer.parseInt(this.cantidad.getText().toString()); 
+			float vu = Float.parseFloat(this.valorU.getText().toString());
+			float vt = 0;
+			
+			vt = cantidad * vu;
+			this.valorT.setText(String.valueOf(vt));
+			this.subtotal.setText(String.valueOf(vt));
+			
+			float iva = 0;
+			iva = vt * Float.parseFloat("0.14");
+			this.iva.setText(String.valueOf(iva));
+			this.total.setText(String.valueOf(vt + iva));
 
+		} else {
+			Toast.makeText(getApplicationContext(),
+					"Ingrese detalle, cantidad y valor por favor.", Toast.LENGTH_SHORT)
+					.show();
+		}
+		
+		
+	}
+	
 
 	public void CrearAbrirBDD() {
 		// crear DB

@@ -50,7 +50,7 @@ public class ConsultarCompras extends ActionBarActivity {
 
 		if (c.moveToFirst()) {
 			do {
-				com = new Compra(c.getInt(0), c.getString(1));
+				com = new Compra(c.getInt(0), c.getString(4), c.getString(3));
 				listaCom.add(com);
 			} while (c.moveToNext());
 		}

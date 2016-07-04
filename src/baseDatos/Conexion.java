@@ -32,8 +32,8 @@ public class Conexion extends Activity{
 				+ ")";
 		this.tbl_compra = "CREATE TABLE IF NOT EXISTS tbl_compra"
 				+ "(_idcom INTEGER PRIMARY KEY AUTOINCREMENT,"
-				+ "id_emp INTEGER NOT NULL,"
-				+ "id_pro INTEGER NOT NULL,"
+				+ "id_emp INTEGER NULL,"
+				+ "id_pro INTEGER NULL,"
 				+ "fecha_com TEXT NOT NULL,"
 				+ "detalle_com TEXT NOT NULL,"
 				+ "cantidad_com INTEGER NOT NULL,"
@@ -42,7 +42,6 @@ public class Conexion extends Activity{
 				+ "subtotal_com REAL NOT NULL,"
 				+ "iva_com REAL NOT NULL"
 				+ ")";
-		
 		
 		
 	}

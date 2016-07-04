@@ -32,15 +32,16 @@ public class Compra {
 		this.total_com = total_com;
 	}
 
-	public Compra(int id, String detalle_com) {
+	public Compra(int id, String detalle_com, String fecha_com) {
 
 		this.id = id;
 		this.detalle_com = detalle_com;
+		this.fecha_com = fecha_com;
 	}
 
 	@Override
 	public String toString() {
-		return this.id + " " + this.detalle_com;
+		return this.id + "   " + this.detalle_com + "   " + this.fecha_com;
 	}
 
 	
