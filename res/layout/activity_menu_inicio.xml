@@ -9,66 +9,77 @@
     tools:context="com.registroleche.MenuInicio" >
 
     <LinearLayout
+        style="@style/titulos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:orientation="vertical" >
 
-        <TextView
-            style="@style/titulos"
-            android:id="@+id/textView1"
-            android:layout_width="298dp"
-            android:layout_height="wrap_content"
-            android:text="Menú"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <Button
-            android:id="@+id/button1"
-            style="@style/botonmenu"
+        <ScrollView
+            android:id="@+id/scrollView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:onClick="Perfil"
-            android:text="Mi Perfil" />
+            android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/button2"
-            style="@style/botonmenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:onClick="Proveedores"
-            android:text="Proveedores" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/button3"
-            style="@style/botonmenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:text="Compras" 
-            android:onClick="Compras"
-            />
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Puede elegir entre las siguientes opciones:" />
 
-        <Button
-            android:id="@+id/button4"
-            style="@style/botonmenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:text="Reportes" 
-            android:onClick="MostrarReportes"
-            />
+                <Button
+                    android:id="@+id/button1"
+                    style="@style/botonmenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:onClick="Perfil"
+                    android:text="Mi Perfil" />
 
-        <Button
-            android:id="@+id/Button01"
-            style="@style/botonmenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:onClick="Salir"
-            android:text="Salir" />
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/botonmenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:onClick="Proveedores"
+                    android:text="Proveedores" />
+
+                <Button
+                    android:id="@+id/button3"
+                    style="@style/botonmenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:onClick="Compras"
+                    android:text="Compras" />
+
+                <Button
+                    android:id="@+id/button4"
+                    style="@style/botonmenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:onClick="MostrarReportes"
+                    android:text="Reportes" />
+
+                <Button
+                    android:id="@+id/Button01"
+                    style="@style/botonmenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:layout_marginBottom="10dip"
+                    android:onClick="Salir"
+                    android:text="Salir" />
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 

@@ -134,6 +134,7 @@
                         android:id="@+id/button2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dip"
                         android:onClick="ProcesoGuardar"
                         android:text="Guardar" />
 
@@ -141,6 +142,7 @@
                         android:id="@+id/button3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dip"
                         android:text="Cancelar" 
                         android:onClick="CancelarNuevo"
                         />

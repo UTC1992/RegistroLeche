@@ -12,114 +12,112 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
         android:orientation="vertical" >
 
-        <TextView
-            style="@style/titulos"
-            android:id="@+id/textView1"
-            android:layout_width="296dp"
-            android:layout_height="wrap_content"
-            android:text="Nuevos Datos "
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.59"
-            android:text="Nombres:" />
-
-        <EditText
-            android:id="@+id/nombre_pro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
-            android:ems="10"
-            android:background="@android:drawable/edit_text" >
-
-            <requestFocus />
-        </EditText>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Apellidos:" />
-
-        <EditText
-            android:id="@+id/apellido_pro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
-            android:ems="10" 
-            android:background="@android:drawable/edit_text"/>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Telefono:" />
-
-        <EditText
-            android:id="@+id/telefono_pro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-          android:maxLength="10"
-            android:ems="10" 
-            android:background="@android:drawable/edit_text"/>
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dirección:" />
-
-        <EditText
-            android:id="@+id/direccion_pro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10" android:background="@android:drawable/edit_text"/>
-
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <Button
-                android:id="@+id/button1"
-                style="@style/botonmenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:layout_weight="0.11"
-                android:text="Actualizar" 
-                android:onClick="ActualizarProv"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/button2"
-                style="@style/botonmenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginTop="10dip"
-                android:layout_weight="0.18"
-                android:text="Eliminar" 
-                android:onClick="Eliminar"
-                />
-				
-             <Button
-                style="@style/loginBoton"
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.20"
-                android:layout_marginLeft="10dip"
-                android:layout_marginTop="10dip"
-                android:text="Cancelar" 
-                android:onClick="Cancelar"/>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView1"
+                    style="@style/titulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Editar Información"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Puede modificar la siguiente información:" />
+
+                <EditText
+                    android:id="@+id/nombre_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/edit_text"
+                    android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
+                    android:ems="10"
+                    android:hint="Nombre proveedor" />
+
+                <EditText
+                    android:id="@+id/apellido_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/edit_text"
+                    android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
+                    android:ems="10"
+                    android:hint="Apellido proveedor" />
+
+                <EditText
+                    android:id="@+id/telefono_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/edit_text"
+                    android:ems="10"
+                    android:hint="Editar teléfono"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10" />
+
+                <EditText
+                    android:id="@+id/direccion_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:drawable/edit_text"
+                    android:ems="10"
+                    android:hint="Dirección proveedor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/button1"
+                        style="@style/botonmenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:layout_marginBottom="10dip"
+                        android:layout_weight="0.11"
+                        android:onClick="ActualizarProv"
+                        android:text="Actualizar" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        style="@style/botonmenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginTop="10dip"
+                        android:layout_marginBottom="10dip"
+                        android:layout_weight="0.18"
+                        android:onClick="Eliminar"
+                        android:text="Eliminar" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        style="@style/loginBoton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginTop="10dip"
+                        android:layout_marginBottom="10dip"
+                        android:layout_weight="0.20"
+                        android:onClick="Cancelar"
+                        android:text="Cancelar" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
     </LinearLayout>
 
 </RelativeLayout>
