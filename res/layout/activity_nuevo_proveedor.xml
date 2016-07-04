@@ -14,10 +14,11 @@
         android:orientation="vertical" >
 
         <TextView
+            style="@style/titulos"
             android:id="@+id/textView1"
             android:layout_width="296dp"
             android:layout_height="wrap_content"
-            android:text="                 Nuevo Registro "
+            android:text="Nuevo Registro "
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -25,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.59"
-            android:text="Ingrese sus datos:" />
+            android:text="Ingrese los datos:" />
 
         <EditText
             android:id="@+id/nombre_pro"

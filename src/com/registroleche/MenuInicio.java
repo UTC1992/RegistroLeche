@@ -34,6 +34,11 @@ public class MenuInicio extends ActionBarActivity {
 		Intent proveedores = new Intent(this, ConsultarProveedores.class);
 		startActivity(proveedores);
 	}
+	
+	public void Compras(View view) {
+		Intent compras = new Intent(this, ConsultarCompras.class);
+		startActivity(compras);
+	}
 
 	public void Salir(View view)
 	{
@@ -45,7 +50,7 @@ public class MenuInicio extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_inicio, menu);
+		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
 	}
 

@@ -88,9 +88,10 @@
                 android:id="@+id/txtcorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
                 android:ems="10"
-                android:hint="Correo Electronico" 
-                android:background="@android:drawable/edit_text"/>
+                android:hint="Correo Electrónico"
+                android:inputType="textEmailAddress" />
 
         </LinearLayout>
 

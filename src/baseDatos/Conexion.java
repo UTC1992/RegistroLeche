@@ -9,10 +9,8 @@ public class Conexion extends Activity{
 	//atributpos o tablas
 	private String tbl_empleado;
 	private String tbl_proveedor;
-	/* private String tbl_estudiante;
-	private String tbl_producto;
-	private String tbl_nota;
-	*/
+	private String tbl_compra;
+	
 	public Conexion()
 	{
 		this.tbl_empleado = "CREATE TABLE IF NOT EXISTS tbl_empleado"
@@ -32,18 +30,31 @@ public class Conexion extends Activity{
 				+ "telefono_pro TEXT NOT NULL,"
 				+ "direccion_pro TEXT NOT NULL"
 				+ ")";
+		this.tbl_compra = "CREATE TABLE IF NOT EXISTS tbl_compra"
+				+ "(_idcom INTEGER PRIMARY KEY AUTOINCREMENT,"
+				+ "id_emp INTEGER NOT NULL,"
+				+ "id_pro INTEGER NOT NULL,"
+				+ "fecha_com TEXT NOT NULL,"
+				+ "detalle_com TEXT NOT NULL,"
+				+ "cantidad_com INTEGER NOT NULL,"
+				+ "valor_unitario_com REAL NOT NULL,"
+				+ "valor_total_com REAL NOT NULL,"
+				+ "subtotal_com REAL NOT NULL,"
+				+ "iva_com REAL NOT NULL"
+				+ ")";
+		
+		
 		
 	}
-	
+	//aqui se realiza la conexion a la base de datos
 	public void CrearBaseDatos(SQLiteDatabase base)
 	{
 		try {
 			//ejecucion y creacion de tablas
         	base.execSQL(tbl_empleado);
         	base.execSQL(tbl_proveedor);
-        	//base.execSQL(tbl_estudiante);
-        	//base.execSQL(tbl_producto);
-        	//base.execSQL(tbl_nota);
+        	base.execSQL(tbl_compra);
+        	
         	
         System.out.println("Tablas creadas");
         	

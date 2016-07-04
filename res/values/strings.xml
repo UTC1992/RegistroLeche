@@ -7,15 +7,10 @@
     <string name="title_activity_registro_user">REGISTRO DE USUARIO</string>
     <string name="title_activity_login_user">App Chanchalito</string>
     <string name="title_activity_menu_admin">MENU</string>
-    
-    
     <string name="title_section1">Inicio</string>
     <string name="title_section2">Mi Perfil</string>
     <string name="title_section3">Proveedores</string>
     <string name="title_section4">Nuevo Proveedor</string>
-    
-    
-    
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example"></string>
@@ -30,5 +25,7 @@
     <string name="title_activity_consultar_proveedores">Proveedores</string>
     <string name="title_activity_nuevo_proveedor">Nuevo Proveedor</string>
     <string name="title_activity_editar_proveedor">Editar Proveedor</string>
+    <string name="title_activity_nuevo_compra">Nueva Compra</string>
+    <string name="title_activity_consultar_compras">Compras</string>
 
 </resources>

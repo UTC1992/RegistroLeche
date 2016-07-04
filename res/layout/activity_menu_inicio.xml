@@ -42,6 +42,24 @@
             android:text="Proveedores" />
 
         <Button
+            android:id="@+id/button3"
+            style="@style/botonmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Compras" 
+            android:onClick="Compras"
+            />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/botonmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Reportes" />
+
+        <Button
             android:id="@+id/Button01"
             style="@style/botonmenu"
             android:layout_width="match_parent"

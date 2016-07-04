@@ -1,5 +1,6 @@
 package baseDatos;
 
+import models.Compra;
 import models.Empleado;
 import models.Proveedor;
 import android.content.ContentValues;
@@ -87,6 +88,51 @@ public class AdministrarBD {
 		
 		return respuestaDelet > 0;
 	}
+
+
+	/*======================PROVEEDORES===============================*/
+	
+	public boolean insertarC(SQLiteDatabase base, Compra compra) {
+		ContentValues valores = this.llenarValoresC(compra);
+
+		// insert ==> la respuesta puede ser 1 o 0... 1=true 0=false
+		long respuestaInsert = base.insert("tbl_compra", null, valores);
+
+		return respuestaInsert > 0;
+	}
+	
+	public ContentValues llenarValoresC(Compra compra) {
+		ContentValues valores = new ContentValues();
+
+		valores.put("fecha_com", compra.fecha_com);
+		valores.put("detalle_com", compra.detalle_com);
+		valores.put("cantidad_com", compra.cantidad_com);
+		valores.put("valor_unitario_com", compra.valorUnitario_com);
+		valores.put("valor_total_com", compra.valorTotal_com);
+		valores.put("subtotal_com", compra.subtotal_com);
+		valores.put("iva_com", compra.iva_com);
+
+		return valores;
+		
+	}
+	
+	public boolean actualizarC(SQLiteDatabase base, Compra compra, int id) {
+		ContentValues valores = this.llenarValoresC(compra);
+
+		// Actualizamos el registro en la base de datos
+		long respuestaUpdate = base.update("tbl_compra", valores, "_idcom=" + id, null);
+
+		return respuestaUpdate > 0;
+	}
+	
+	public boolean eliminarC(SQLiteDatabase base, int id)
+	{
+		//eliminamos el resgitro 
+		long respuestaDelet = base.delete("tbl_compra", "_idcom =" + id, null);
+		
+		return respuestaDelet > 0;
+	}
+
 	
 	
 }
