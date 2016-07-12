@@ -85,6 +85,7 @@
                     android:id="@+id/txtvalortotalcom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:drawable/edit_text"
                     android:ems="10"
                     android:hint="Valor total"
                     android:inputType="numberDecimal" />
@@ -93,6 +94,7 @@
                     android:id="@+id/txtsubtotalcom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:drawable/edit_text"
                     android:ems="10"
                     android:hint="Subtotal"
                     android:inputType="numberDecimal" />
@@ -111,6 +113,7 @@
                         android:id="@+id/txtivacom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@android:drawable/edit_text"
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Iva"
@@ -122,6 +125,7 @@
                     android:id="@+id/txttotalcom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:drawable/edit_text"
                     android:ems="10"
                     android:hint="Total"
                     android:inputType="numberDecimal" />
