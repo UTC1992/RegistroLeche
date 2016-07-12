@@ -2,8 +2,13 @@
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
 <<<<<<< HEAD
+<<<<<<< HEAD
 1468341213085 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f C:\AppEclipse\LECHE\RegistroLeche\libs\android-support-v4.jar
 1374615420000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f C:\AppEclipse\LECHE\appcompat_v7\libs\android-support-v4.jar
+=======
+1468343038646 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f C:\AppEclipse\RepositoriosRegistroLeche\RegistroLeche\libs\android-support-v4.jar
+1374615420000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f C:\AppEclipse\RepositoriosRegistroLeche\appcompat_v7\libs\android-support-v4.jar
+>>>>>>> origin/master
 =======
 1374615420000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f C:\Programas_Android\appcompat_v7\libs\android-support-v4.jar
 1468340825588 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f C:\Programas_Android\RegistroLeche\libs\android-support-v4.jar
