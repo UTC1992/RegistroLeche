@@ -40,22 +40,26 @@
                     android:text="Ingrese los siguientes datos:" />
 
                 <EditText
-                    android:id="@+id/txtfechacom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Fecha" >
-
-                    <requestFocus />
-                </EditText>
-
-                <EditText
                     android:id="@+id/txtdetallecom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Detalle del producto"
-                    android:inputType="textMultiLine" />
+                     android:background="@android:drawable/edit_text"
+                     android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
+                    android:inputType="textMultiLine" />	
+                      <requestFocus />
+
+                <EditText
+                    android:id="@+id/txtfechacom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:background="@android:drawable/edit_text"
+                    android:hint="Fecha" >
+
+                  
+                </EditText>
 
                 <EditText
                     android:id="@+id/txtcantidadcom"
@@ -63,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Cantidad de Litros"
+                    android:background="@android:drawable/edit_text"
                     android:inputType="number" />
 
                 <EditText
@@ -71,6 +76,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Valor unitario"
+                    android:background="@android:drawable/edit_text"
                     android:inputType="numberDecimal" />
 
                 <Button
