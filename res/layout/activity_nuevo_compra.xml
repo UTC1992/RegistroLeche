@@ -44,8 +44,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Fecha" >
-
+                    android:hint="Fecha" 
+                    android:background="@android:drawable/edit_text"
+                    >
+						
                     <requestFocus />
                 </EditText>
 
@@ -55,7 +57,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Detalle del producto"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine" 
+                    android:background="@android:drawable/edit_text"/>
 
                 <EditText
                     android:id="@+id/txtcantidadcom"
@@ -63,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Cantidad de Litros"
-                    android:inputType="number" />
+                    android:inputType="number" 
+                    android:background="@android:drawable/edit_text"/>
 
                 <EditText
                     android:id="@+id/txtvalorucom"
@@ -71,15 +75,17 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Valor unitario"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal" 
+                    android:background="@android:drawable/edit_text"/>
 
                 <Button
                     android:id="@+id/button1"
-                    android:layout_width="wrap_content"
+                    style="@style/botonmenu"
+                    android:layout_width="114dp"
                     android:layout_height="wrap_content"
-                    android:text="Calcular" 
+                    android:layout_marginBottom="10dip"
                     android:onClick="CalcularTotales"
-                    />
+                    android:text="Calcular" />
 
                 <EditText
                     android:id="@+id/txtvalortotalcom"
@@ -87,7 +93,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Valor total"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal" 
+                    android:background="@android:drawable/edit_text"/>
 
                 <EditText
                     android:id="@+id/txtsubtotalcom"
@@ -95,7 +102,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Subtotal"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal" 
+                    android:background="@android:drawable/edit_text"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -114,7 +122,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Iva"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal" 
+                        android:background="@android:drawable/edit_text"/>
 
                 </LinearLayout>
 
@@ -124,7 +133,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Total"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal" 
+                    android:background="@android:drawable/edit_text"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -132,19 +142,23 @@
 
                     <Button
                         android:id="@+id/button2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="114dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dip"
                         android:onClick="ProcesoGuardar"
-                        android:text="Guardar" />
+                        android:text="Guardar"
+                        style="@style/botonmenu" 
+                        />
 
                     <Button
                         android:id="@+id/button3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="114dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dip"
+                        android:layout_marginLeft="10dip"
                         android:text="Cancelar" 
                         android:onClick="CancelarNuevo"
+                        style="@style/botonmenu"
                         />
 
                 </LinearLayout>
