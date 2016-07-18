@@ -40,26 +40,22 @@
                     android:text="Ingrese los siguientes datos:" />
 
                 <EditText
+                    android:id="@+id/txtfechacom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Fecha" >
+
+                    <requestFocus />
+                </EditText>
+
+                <EditText
                     android:id="@+id/txtdetallecom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Detalle del producto"
-                     android:background="@android:drawable/edit_text"
-                     android:digits="qwertzuiopasdfghjklyxcvbnñm QWERTZUIOPASDFGHJKLYXCVBNMÑ"
-                    android:inputType="textMultiLine" />	
-                      <requestFocus />
-
-                <EditText
-                    android:id="@+id/txtfechacom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@android:drawable/edit_text"
-                    android:hint="Fecha" >
-
-                  
-                </EditText>
+                    android:inputType="textMultiLine" />
 
                 <EditText
                     android:id="@+id/txtcantidadcom"
@@ -67,7 +63,6 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Cantidad de Litros"
-                    android:background="@android:drawable/edit_text"
                     android:inputType="number" />
 
                 <EditText
@@ -76,17 +71,12 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Valor unitario"
-                    android:background="@android:drawable/edit_text"
                     android:inputType="numberDecimal" />
 
                 <Button
                     android:id="@+id/button1"
-                    style="@style/botonmenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip"
-                    android:layout_marginBottom="10dip"
-                    android:layout_weight="0.11"
                     android:text="Calcular" 
                     android:onClick="CalcularTotales"
                     />
@@ -95,7 +85,6 @@
                     android:id="@+id/txtvalortotalcom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:drawable/edit_text"
                     android:ems="10"
                     android:hint="Valor total"
                     android:inputType="numberDecimal" />
@@ -104,7 +93,6 @@
                     android:id="@+id/txtsubtotalcom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:drawable/edit_text"
                     android:ems="10"
                     android:hint="Subtotal"
                     android:inputType="numberDecimal" />
@@ -123,7 +111,6 @@
                         android:id="@+id/txtivacom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@android:drawable/edit_text"
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Iva"
@@ -135,7 +122,6 @@
                     android:id="@+id/txttotalcom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:drawable/edit_text"
                     android:ems="10"
                     android:hint="Total"
                     android:inputType="numberDecimal" />
@@ -146,23 +132,17 @@
 
                     <Button
                         android:id="@+id/button2"
-                        style="@style/botonmenu"
-                        android:layout_width="134dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dip"
                         android:layout_marginBottom="10dip"
-                        android:layout_marginTop="10dip"
                         android:onClick="ProcesoGuardar"
                         android:text="Guardar" />
 
                     <Button
                         android:id="@+id/button3"
-                        style="@style/botonmenu"
-                        android:layout_width="134dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dip"
                         android:layout_marginBottom="10dip"
-                        android:layout_marginTop="10dip"
                         android:text="Cancelar" 
                         android:onClick="CancelarNuevo"
                         />
