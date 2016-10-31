@@ -1,8 +1,11 @@
 package com.registroleche;
 
+import java.util.ArrayList;
+
 import models.Empleado;
 import models.Proveedor;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,6 +27,9 @@ public class NuevoProveedor extends ActionBarActivity {
 	// conexion
 	Conexion conex = new Conexion();
 	SQLiteDatabase base;
+	
+	ArrayList<String> listaEmp = new ArrayList<String>();
+	int idEmpleado;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,24 @@ public class NuevoProveedor extends ActionBarActivity {
 		this.apellidos = (EditText) findViewById(R.id.apellido_pro);
 		this.telefono = (EditText) findViewById(R.id.telefono_pro);
 		this.direccion = (EditText) findViewById(R.id.direccion_pro);
+		
+		//=================CONSULTAR ID EMPLEADO
+		Empleado emp;
+
+		this.CrearAbrirBDD();
+
+		Cursor c1 = base.rawQuery("SELECT * FROM tbl_empleado WHERE activo_emp='1'", null);
+
+		if (c1.moveToFirst()) {
+			do {
+				String idEmp = c1.getInt(0)+ "";
+				listaEmp.add(idEmp);
+			} while (c1.moveToNext());
+		}
+
+		startManagingCursor(c1);
+		idEmpleado = Integer.parseInt(listaEmp.get(0).toString());
+		
 	}
 
 	public void ProcesoGuardar(View view) {
@@ -83,7 +107,8 @@ public class NuevoProveedor extends ActionBarActivity {
 		if (!this.nombres.getText().toString().equals("")
 				&& !this.apellidos.getText().toString().equals("")
 				&& !this.telefono.getText().toString().equals("")
-				&& !this.direccion.getText().toString().equals("")) {
+				&& !this.direccion.getText().toString().equals("")
+				&& idEmpleado > 0) {
 
 			return true;
 
@@ -95,7 +120,7 @@ public class NuevoProveedor extends ActionBarActivity {
 	public Proveedor CapturarDatos() {
 		Proveedor prov = new Proveedor(this.nombres.getText().toString(),
 				this.apellidos.getText().toString(), this.telefono.getText()
-						.toString(), this.direccion.getText().toString());
+						.toString(), this.direccion.getText().toString(),idEmpleado);
 		return prov;
 	}
 

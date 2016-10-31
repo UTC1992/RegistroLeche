@@ -1,17 +1,25 @@
 package com.registroleche;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import models.Compra;
+import models.Empleado;
+import models.Proveedor;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 import baseDatos.AdministrarBD;
 import baseDatos.Conexion;
@@ -19,7 +27,15 @@ import baseDatos.Conexion;
 public class NuevoCompra extends ActionBarActivity {
 
 	EditText fecha, detalle, cantidad, valorU, valorT, subtotal, iva, total;
-
+	Spinner listaProveedor;
+	String provElegido;
+	
+	ArrayList<Proveedor> listaPro = new ArrayList<Proveedor>();
+	int idProveedor = 0;
+	
+	ArrayList<String> listaEmp = new ArrayList<String>();
+	int idEmpleado;
+	
 	// administracion
 	AdministrarBD admin = new AdministrarBD();
 
@@ -40,9 +56,9 @@ public class NuevoCompra extends ActionBarActivity {
 		this.cantidad= (EditText)findViewById(R.id.txtcantidadcom);
 		this.valorU= (EditText)findViewById(R.id.txtvalorucom);
 		this.valorT= (EditText)findViewById(R.id.txtvalortotalcom);
-		this.subtotal= (EditText)findViewById(R.id.txtsubtotalcom);
-		this.iva= (EditText)findViewById(R.id.txtivacom);
-		this.total = (EditText)findViewById(R.id.txttotalcom);
+		
+		//lista desplegable
+		this.listaProveedor = (Spinner)findViewById(R.id.lstproveedores);
 		
 		
 		//obtener fecha del sistema
@@ -52,6 +68,69 @@ public class NuevoCompra extends ActionBarActivity {
 		
 		this.fecha.setText(dia + "-" + mes + "-" + anio);
 		
+		
+		//=================CONSULTAR ID EMPLEADO
+		Empleado emp;
+
+		this.CrearAbrirBDD();
+
+		Cursor c1 = base.rawQuery("SELECT * FROM tbl_empleado WHERE activo_emp='1'", null);
+
+		if (c1.moveToFirst()) {
+			do {
+				String idEmp = c1.getInt(0)+ "";
+				listaEmp.add(idEmp);
+			} while (c1.moveToNext());
+		}
+
+		startManagingCursor(c1);
+		
+		idEmpleado = Integer.parseInt(listaEmp.get(0).toString());
+		
+		
+		
+		//=================CONSULTAR PROVEEDOR
+		// objeto escritor
+		Proveedor prov;
+
+		this.CrearAbrirBDD();
+
+		Cursor c = base.rawQuery("SELECT * FROM tbl_proveedor WHERE id_emp='"+idEmpleado+"'", null);
+		
+		if (c.moveToFirst()) {
+			do {
+				prov = new Proveedor(c.getInt(0),c.getString(2), c.getString(3));
+				listaPro.add(prov);
+			} while (c.moveToNext());
+		}
+
+		startManagingCursor(c);
+
+		ArrayAdapter<Proveedor> adaptador = new ArrayAdapter<Proveedor>(this,
+				android.R.layout.simple_spinner_item, listaPro);
+		listaProveedor.setAdapter(adaptador);
+		
+		
+		//SPINNER con evento clic al seleccionar un item
+		listaProveedor.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				String datosAutor = listaProveedor.getSelectedItem().toString();;
+                String [] vector = datosAutor.split(" ");
+				
+				Toast.makeText(getApplicationContext(), "ID ==> " + vector[0], Toast.LENGTH_SHORT).show();
+				idProveedor = Integer.parseInt(vector[0]);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 	}
 
@@ -98,16 +177,15 @@ public class NuevoCompra extends ActionBarActivity {
 	}
 
 	public boolean ValidarRegistro() {
-
+		
+		
 		// comprobar si los datos fueron llenados
 		if (!this.fecha.getText().toString().equals("")
 				&& !this.detalle.getText().toString().equals("")
 				&& !this.cantidad.getText().toString().equals("")
 				&& !this.valorU.getText().toString().equals("")
 				&& !this.valorT.getText().toString().equals("")
-				&& !this.subtotal.getText().toString().equals("")
-				&& !this.iva.getText().toString().equals("")
-				&& !this.total.getText().toString().equals("")) {
+				&& this.idProveedor > 0) {
 
 			return true;
 
@@ -121,10 +199,7 @@ public class NuevoCompra extends ActionBarActivity {
 				this.detalle.getText().toString(), 
 				Integer.parseInt(this.cantidad.getText().toString()), 
 				Float.parseFloat(this.valorU.getText().toString()),
-				Float.parseFloat(this.valorT.getText().toString()),
-				Float.parseFloat(this.subtotal.getText().toString()),
-				Float.parseFloat(this.iva.getText().toString()),
-				Float.parseFloat(this.total.getText().toString()));
+				Float.parseFloat(this.valorT.getText().toString()),idProveedor, idEmpleado);
 		return com;
 	}
 	
@@ -142,13 +217,13 @@ public class NuevoCompra extends ActionBarActivity {
 			
 			vt = cantidad * vu;
 			this.valorT.setText(String.valueOf(vt));
-			this.subtotal.setText(String.valueOf(vt));
+			/*this.subtotal.setText(String.valueOf(vt));
 			
 			float iva = 0;
 			iva = vt * Float.parseFloat("0.14");
 			this.iva.setText(String.valueOf(iva));
 			this.total.setText(String.valueOf(vt + iva));
-
+			*/
 		} else {
 			Toast.makeText(getApplicationContext(),
 					"Ingrese detalle, cantidad y valor por favor.", Toast.LENGTH_SHORT)

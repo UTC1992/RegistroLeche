@@ -25,6 +25,7 @@ public class Conexion extends Activity{
 				+ ")";
 		this.tbl_proveedor = "CREATE TABLE IF NOT EXISTS tbl_proveedor"
 				+ "(_idpro INTEGER PRIMARY KEY AUTOINCREMENT,"
+				+ "id_emp INTEGER NULL,"
 				+ "nombres_pro TEXT NOT NULL,"
 				+ "apellidos_pro TEXT NOT NULL,"
 				+ "telefono_pro TEXT NOT NULL,"
@@ -39,8 +40,8 @@ public class Conexion extends Activity{
 				+ "cantidad_com INTEGER NOT NULL,"
 				+ "valor_unitario_com REAL NOT NULL,"
 				+ "valor_total_com REAL NOT NULL,"
-				+ "subtotal_com REAL NOT NULL,"
-				+ "iva_com REAL NOT NULL"
+				+ "subtotal_com REAL NULL,"
+				+ "iva_com REAL NULL"
 				+ ")";
 		
 		

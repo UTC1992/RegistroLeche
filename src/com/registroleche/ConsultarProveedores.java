@@ -2,6 +2,7 @@ package com.registroleche;
 
 import java.util.ArrayList;
 
+import models.Empleado;
 import models.Proveedor;
 import android.content.Intent;
 import android.database.Cursor;
@@ -41,17 +42,33 @@ public class ConsultarProveedores extends ActionBarActivity {
 
 		this.listaproveedores = (ListView) findViewById(R.id.proveedores);
 		
+		//CONSULTAR ID EMPLEADO
+		//=================CONSULTAR ID EMPLEADO
+		Empleado emp;
+
+		this.CrearAbrirBDD();
+
+		Cursor c1 = base.rawQuery("SELECT * FROM tbl_empleado WHERE activo_emp='1'", null);
+		int idEmp=0;
+		
+		if (c1.moveToFirst()) {
+			do {
+				idEmp = c1.getInt(0);
+			} while (c1.moveToNext());
+		}
+
+		startManagingCursor(c1);
 		
 		// objeto escritor
 		Proveedor prov;
 
 		this.CrearAbrirBDD();
 
-		Cursor c = base.rawQuery("SELECT * FROM tbl_proveedor", null);
+		Cursor c = base.rawQuery("SELECT * FROM tbl_proveedor WHERE id_emp='"+idEmp+"'", null);
 
 		if (c.moveToFirst()) {
 			do {
-				prov = new Proveedor(c.getInt(0),c.getString(1), c.getString(2));
+				prov = new Proveedor(c.getInt(0),c.getString(2), c.getString(3));
 				listaPro.add(prov);
 			} while (c.moveToNext());
 		}

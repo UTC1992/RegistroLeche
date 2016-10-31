@@ -1,8 +1,10 @@
 package com.registroleche;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import models.Compra;
+import models.Empleado;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,6 +25,7 @@ public class ConsultarCompras extends ActionBarActivity {
 
 	ListView lstcompras;
 	ArrayList<Compra> listaCom = new ArrayList<Compra>();
+	ArrayList<Compra> listaComIvertida = new ArrayList<Compra>();
 
 	// Conexion
 	Conexion conex = new Conexion();
@@ -41,22 +44,52 @@ public class ConsultarCompras extends ActionBarActivity {
 
 		this.listacompras = (ListView) findViewById(R.id.lstcompras);
 
-		// objeto escritor
+		//CONSULTAR ID EMPLEADO
+		//=================CONSULTAR ID EMPLEADO
+		Empleado emp;
+
+		this.CrearAbrirBDD();
+
+		Cursor c1 = base.rawQuery("SELECT * FROM tbl_empleado WHERE activo_emp='1'", null);
+		int idEmp=0;
+		
+		if (c1.moveToFirst()) {
+			do {
+				idEmp = c1.getInt(0);
+			} while (c1.moveToNext());
+		}
+
+		startManagingCursor(c1);
+		
+		
+		// objeto 
 		Compra com;
 
 		this.CrearAbrirBDD();
 
-		Cursor c = base.rawQuery("SELECT * FROM tbl_compra", null);
-
+		Cursor c = base.rawQuery("SELECT * FROM tbl_compra WHERE id_emp='"+idEmp+"'", null);
+		
+		//dar formato para numeros decimales
+		DecimalFormat df = new DecimalFormat("0.00");
+		
 		if (c.moveToFirst()) {
 			do {
-				com = new Compra(c.getInt(0), c.getString(4), c.getString(3));
+				com = new Compra(c.getInt(0), c.getString(4), c.getString(3), df.format(c.getDouble(7))+" $");
 				listaCom.add(com);
 			} while (c.moveToNext());
 		}
-
+		
+		//INVERTIR IMPRESION DESENDENTE
+	//	System.out.println("Tamaño de lista ==> "+listaCom.size());
+		
+		for (int i = listaCom.size()-1; i >= 0  ; i--) {
+			listaComIvertida.add(listaCom.get(i));
+		//	System.out.println("Tamaño de lista ==> "+i);
+		}
+	
+		
 		ArrayAdapter<Compra> adaptador = new ArrayAdapter<Compra>(this,
-				android.R.layout.simple_list_item_1, listaCom);
+				android.R.layout.simple_list_item_1, listaComIvertida);
 		listacompras.setAdapter(adaptador);
 
 		listacompras.setOnItemClickListener(new OnItemClickListener() {
@@ -75,9 +108,9 @@ public class ConsultarCompras extends ActionBarActivity {
 				idCompra = vector[0];
 
 				// declarar intent para pasar datos de un activity a otro
-				//Intent mostrarAutor = new Intent(ConsultarProveedores.this,EditarProveedor.class);
-				//mostrarAutor.putExtra("id", vector[0]);
-				//startActivity(mostrarAutor);
+				Intent mostrarCompra = new Intent(ConsultarCompras.this,EditarCompra.class);
+				mostrarCompra.putExtra("idCompra", vector[0]);
+				startActivity(mostrarCompra);
 
 			}
 		});

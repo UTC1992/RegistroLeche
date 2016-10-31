@@ -26,6 +26,8 @@ public class MainActivity extends ActionBarActivity {
 	Conexion conex = new Conexion();
 	SQLiteDatabase base;
 	
+	String idEmpleado;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,12 +44,16 @@ public class MainActivity extends ActionBarActivity {
 
 		if (Login(usua, pas)) {
 			
-			nombre.setText("");
-			contrasenia.setText("");
+			//cambio estado de activo a inactivo
+			this.CrearAbrirBDD();
+			base.execSQL("UPDATE tbl_empleado SET activo_emp='1' WHERE _idemp='"+ idEmpleado + "'");
 			
 			Toast.makeText(this, "Bienvenido", Toast.LENGTH_SHORT).show();
 			Intent ingresar = new Intent(this, MenuInicio.class);
 			startActivity(ingresar);
+			
+			
+			
 		} else {
 			Toast.makeText(this, "El usuario o contraseña es incorrecto",
 					Toast.LENGTH_SHORT).show();
@@ -85,9 +91,6 @@ public class MainActivity extends ActionBarActivity {
 					empleado = new Empleado(c.getInt(0),c.getString(5), c.getString(6));
 				} while (c.moveToNext());
 			}
-
-			//System.out.println("username del empleado" + empleado.username_emp + "--" + empleado.password_emp);
-			//System.out.println("username del empleado" + usu + "--" + pas);
 			
 			if(empleado.username_emp == null && empleado.password_emp == null)
 			{
@@ -101,6 +104,7 @@ public class MainActivity extends ActionBarActivity {
 				}
 			}
 			
+			idEmpleado = empleado.id+"";
 			
 		}
 		

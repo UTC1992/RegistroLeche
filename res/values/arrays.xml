@@ -3,13 +3,11 @@
     <!--Array con los valores de la cabecera de la tabla-->
 	<string-array name="cabecera_tabla">
 	    <item>N°</item>
+	    <item>Proveedor</item>
 	    <item>Fecha</item>
 	    <item>Detalle</item>
 	    <item>Cantidad</item>
 	    <item>Valor U.</item>
 	    <item>Valor T.</item>
-	    <item>Subtotal.</item>
-	    <item>Iva 14%</item>
-	    <item>Total</item>
 	</string-array>
 </resources>

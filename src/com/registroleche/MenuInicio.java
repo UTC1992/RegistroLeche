@@ -1,6 +1,8 @@
 package com.registroleche;
 
+import models.Empleado;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -18,11 +20,31 @@ public class MenuInicio extends ActionBarActivity {
 	// conexion
 	Conexion conex = new Conexion();
 	SQLiteDatabase base;
-
+	
+	String idEmp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu_inicio);
+		
+		
+		//=================CONSULTAR ID EMPLEADO
+		Empleado emp;
+
+		this.CrearAbrirBDD();
+
+		Cursor c1 = base.rawQuery("SELECT * FROM tbl_empleado WHERE activo_emp='1'", null);
+
+		if (c1.moveToFirst()) {
+			do {
+				idEmp = c1.getInt(0)+ "";
+			} while (c1.moveToNext());
+		}
+
+		startManagingCursor(c1);
+		
+		
+		
 	}
 
 	public void Perfil(View view) {
@@ -42,17 +64,32 @@ public class MenuInicio extends ActionBarActivity {
 
 	public void MostrarReportes(View view)
 	{
-		Intent reportes = new Intent(this, ReportesCompras.class);
+		Intent reportes = new Intent(this, MenuReportes.class);
 		startActivity(reportes);
+	}
+	
+	public void Rutas(View view)
+	{
+		Intent rutas = new Intent(this, MenuImagen.class);
+		startActivity(rutas);
 	}
 	
 	public void Salir(View view)
 	{
-		//base.execSQL("UPDATE tbl_empleado SET activo_emp=0 WHERE activo_emp=1 ");
+		this.CrearAbrirBDD();
+		base.execSQL("UPDATE tbl_empleado SET activo_emp='0' WHERE _idemp='"+ idEmp + "'");
+		
 		Intent login = new Intent(this, MainActivity.class);
 		startActivity(login);
 	}
 
+	public void CrearAbrirBDD() {
+		// crear DB
+		base = openOrCreateDatabase("registro_compras_db.sqlite",
+				MODE_WORLD_WRITEABLE, null);
+		this.conex.CrearBaseDatos(base);
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -68,6 +68,7 @@ public class AdministrarBD {
 		valores.put("apellidos_pro", proveedor.apellido);
 		valores.put("telefono_pro", proveedor.telefono);
 		valores.put("direccion_pro", proveedor.direccion);
+		valores.put("id_emp", proveedor.id_emp);
 
 		return valores;
 	}
@@ -90,7 +91,7 @@ public class AdministrarBD {
 	}
 
 
-	/*======================PROVEEDORES===============================*/
+	/*======================COMPRA===============================*/
 	
 	public boolean insertarC(SQLiteDatabase base, Compra compra) {
 		ContentValues valores = this.llenarValoresC(compra);
@@ -104,14 +105,14 @@ public class AdministrarBD {
 	public ContentValues llenarValoresC(Compra compra) {
 		ContentValues valores = new ContentValues();
 
+		valores.put("id_pro", compra.id_prov);
+		valores.put("id_emp", compra.id_emp);
 		valores.put("fecha_com", compra.fecha_com);
 		valores.put("detalle_com", compra.detalle_com);
 		valores.put("cantidad_com", compra.cantidad_com);
 		valores.put("valor_unitario_com", compra.valorUnitario_com);
 		valores.put("valor_total_com", compra.valorTotal_com);
-		valores.put("subtotal_com", compra.subtotal_com);
-		valores.put("iva_com", compra.iva_com);
-
+		
 		return valores;
 		
 	}

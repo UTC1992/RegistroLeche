@@ -51,6 +51,17 @@
                     <requestFocus />
                 </EditText>
 
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccione el proveedor del producto:" />
+
+                <Spinner
+                    android:id="@+id/lstproveedores"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <EditText
                     android:id="@+id/txtdetallecom"
                     android:layout_width="match_parent"
@@ -93,46 +104,6 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Valor total"
-                    android:inputType="numberDecimal" 
-                    android:background="@android:drawable/edit_text"/>
-
-                <EditText
-                    android:id="@+id/txtsubtotalcom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Subtotal"
-                    android:inputType="numberDecimal" 
-                    android:background="@android:drawable/edit_text"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="iva 14%:" />
-
-                    <EditText
-                        android:id="@+id/txtivacom"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="Iva"
-                        android:inputType="numberDecimal" 
-                        android:background="@android:drawable/edit_text"/>
-
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/txttotalcom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Total"
                     android:inputType="numberDecimal" 
                     android:background="@android:drawable/edit_text"/>
 

@@ -1,5 +1,7 @@
 package com.registroleche;
 
+import java.util.ArrayList;
+
 import models.Empleado;
 import models.Proveedor;
 import android.content.Intent;
@@ -25,7 +27,8 @@ public class EditarProveedor extends ActionBarActivity {
 	
 	
 	EditText nombre, apellido, telefono, direccion;
-
+	ArrayList<String> listaEmp = new ArrayList<String>();
+	int idEmpleado;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,22 @@ public class EditarProveedor extends ActionBarActivity {
 		this.telefono = (EditText)findViewById(R.id.telefono_pro);
 		this.direccion = (EditText)findViewById(R.id.direccion_pro);
 		
+		//=================CONSULTAR ID EMPLEADO
+		Empleado emp;
+
+		this.CrearAbrirBDD();
+
+		Cursor c1 = base.rawQuery("SELECT * FROM tbl_empleado WHERE activo_emp='1'", null);
+
+		if (c1.moveToFirst()) {
+			do {
+				String idEmp = c1.getInt(0)+ "";
+				listaEmp.add(idEmp);
+			} while (c1.moveToNext());
+		}
+
+		startManagingCursor(c1);
+		idEmpleado = Integer.parseInt(listaEmp.get(0).toString());
 		
 
 		/*
@@ -56,8 +75,8 @@ public class EditarProveedor extends ActionBarActivity {
 
 		if (c.moveToFirst()) {
 			do {
-				prove = new Proveedor(c.getString(1), c.getString(2),
-						c.getString(3), c.getString(4));
+				prove = new Proveedor(c.getString(2), c.getString(3),
+						c.getString(4), c.getString(5));
 			} while (c.moveToNext());
 		}
 
@@ -114,7 +133,7 @@ public class EditarProveedor extends ActionBarActivity {
 	public Proveedor CapturarDatos() {
 		Proveedor prov = new Proveedor(this.nombre.getText().toString(),
 				this.apellido.getText().toString(), this.telefono.getText()
-						.toString(), this.direccion.getText().toString());
+						.toString(), this.direccion.getText().toString(),idEmpleado);
 		return prov;
 	}
 	
@@ -124,7 +143,8 @@ public class EditarProveedor extends ActionBarActivity {
 		if (!this.nombre.getText().toString().equals("")
 				&& !this.apellido.getText().toString().equals("")
 				&& !this.telefono.getText().toString().equals("")
-				&& !this.direccion.getText().toString().equals("") ) {
+				&& !this.direccion.getText().toString().equals("")
+				&& idEmpleado > 0) {
 
 			return true;
 

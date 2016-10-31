@@ -94,13 +94,53 @@
             android:name=".ReportesCompras"
             android:label="@string/title_activity_reportes_ventas" >
         </activity>
+        <activity
+            android:name=".EditarCompra"
+            android:label="@string/title_activity_editar_compra" >
+        </activity>
+        <activity
+            android:name=".MenuImagen"
+            android:label="@string/title_activity_menu_imagen" >
+        </activity>
+        <activity
+            android:name=".Imagen1"
+            android:label="@string/title_activity_imagen1" >
+        </activity>
+        <activity
+            android:name=".Imagen2"
+            android:label="@string/title_activity_imagen2" >
+        </activity>
+        <activity
+            android:name=".Imagen3"
+            android:label="@string/title_activity_imagen3" >
+        </activity>
+        <activity
+            android:name=".Imagen4"
+            android:label="@string/title_activity_imagen4" >
+        </activity>
+        <activity
+            android:name=".Imagen5"
+            android:label="@string/title_activity_imagen5" >
+        </activity>
+        <activity
+            android:name=".MenuReportes"
+            android:label="@string/title_activity_menu_reportes" >
+        </activity>
+        <activity
+            android:name=".ReporteProveedores"
+            android:label="@string/title_activity_reporte_mensual" >
+        </activity>
+        <activity
+            android:name=".ReportesFecha"
+            android:label="@string/title_activity_reportes_fecha" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!--
      To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
-     option is required to comply with the Google+ Sign-In developer policies
+     option is required to comply with the Google+ Sign-In developer policies
     -->
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
